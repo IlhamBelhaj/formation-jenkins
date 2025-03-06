@@ -60,10 +60,11 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    sh "docker push ${params.USERNAME}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG}"
-                }
+                    dockerPush("${params.USERNAME}", "${DOCKER_IMAGE_NAME}", "${DOCKER_TAG}")
+                        }
             }
         }
+        
         stage('Cleanup') {
                 steps {
                     sh "docker rmi ${params.USERNAME}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG}"
