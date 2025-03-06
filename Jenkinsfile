@@ -47,9 +47,13 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${params.USERNAME}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG} . "
-                  }
-        }
+                buildApp(
+                    username: ${params.USERNAME},
+                    dockerImageName: ${DOCKER_IMAGE_NAME},
+                    dockerTag: ${DOCKER_TAG}
+)
+                  
+        }}
 
         stage('Login to Docker Registry') {
             steps {
