@@ -48,12 +48,11 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 buildApp(
-                    username: ${params.USERNAME},
-                    dockerImageName: ${DOCKER_IMAGE_NAME},
-                    dockerTag: ${DOCKER_TAG}
-)
-                  
-        }}
+                    username: "${params.USERNAME}",
+                    dockerImageName: "${DOCKER_IMAGE_NAME}",
+                    dockerTag: "${DOCKER_TAG}" )
+                  }
+        }
 
         stage('Login to Docker Registry') {
             steps {
