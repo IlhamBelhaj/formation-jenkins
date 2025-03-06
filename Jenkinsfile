@@ -1,4 +1,4 @@
-@Library('jenkins-shared-library') _
+@Library('jenkins-shared-library@main') _
 
 pipeline {
     agent any
@@ -25,8 +25,8 @@ pipeline {
             steps {
             gitCheckout(
                 branch: "main",
-                url: "https://github.com/IlhamBelhaj/formation-jenkins.git"
-    )
+                url: "https://github.com/IlhamBelhaj/formation-jenkins.git" )
+            }
 }
         stage('Build') {
             steps {
@@ -82,4 +82,4 @@ pipeline {
             }
     }
 }
-}}
+}
