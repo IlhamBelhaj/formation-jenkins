@@ -15,10 +15,7 @@ pipeline {
     parameters {
         string(name: 'USERNAME', defaultValue: 'ilhambelhaj', description: 'Docker Hub Username!')
      }
-
-
     
-
     stages {    
 
         stage('Git Checkout') {
@@ -47,7 +44,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${params.USERNAME}/${DOCKER_IMAGE_NAME}:${DOCKER_TAG} . "
+                    dockerBuild("${params.USERNAME}", "${DOCKER_IMAGE_NAME}", "${DOCKER_TAG}")
                   }
         }
 
