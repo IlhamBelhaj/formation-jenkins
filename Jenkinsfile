@@ -1,3 +1,5 @@
+@Library('jenkins-shared-library@main') _
+
 pipeline {
     agent any
     
@@ -14,8 +16,18 @@ pipeline {
         string(name: 'USERNAME', defaultValue: 'ilhambelhaj', description: 'Docker Hub Username!')
      }
 
+
+    
+
     stages {    
 
+        stage('Git Checkout') {
+            steps {
+            gitCheckout(
+                branch: "main",
+                url: "https://github.com/IlhamBelhaj/formation-jenkins.git"
+    )
+}
         stage('Build') {
             steps {
                 sh '''
